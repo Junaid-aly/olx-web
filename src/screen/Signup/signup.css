@@ -1,0 +1,22 @@
+.Main{
+    background-image: url(./bg-theme.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.body-signup{
+    margin-bottom: 20px;
+    width: 70% !important;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
+}
+.Signup-form{
+    overflow: hidden;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
