@@ -23,7 +23,7 @@ function Header() {
       if (user) {
         const uid = user;
         setUser(uid.email);
-        console.log(user);
+        // console.log(user);
       } else {
         // User is signed out
         setUser(null); // Redirect to login page or handle the sign-out logic
@@ -54,7 +54,7 @@ function Header() {
 
   async function UploadImg() {
     await UpDateImg(userData, image);
-    console.log(userData[0].img);
+    // console.log(userData[0].img);
   }
 
   return (
@@ -155,7 +155,6 @@ function Header() {
                       </div>
                     </div>
                   </nav>
-
                 </>
 
                 <div
@@ -167,9 +166,12 @@ function Header() {
                         <div className="dropdown">
                           <div className="profile">
                             {userData ? (
-                              <img src={userData[0].img} alt="jpg"/>
+                              <img src={userData[0].img} alt="jpg" />
                             ) : (
-                              <img src="https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"  alt="jpg"/>
+                              <img
+                                src="https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"
+                                alt="jpg"
+                              />
                             )}
                             <div className="dropdown-content">
                               <ul className="ul">
@@ -178,7 +180,10 @@ function Header() {
                                   {userData ? (
                                     <img src={userData[0].img} />
                                   ) : (
-                                    <img src="https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"  alt="jpg"/>
+                                    <img
+                                      src="https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"
+                                      alt="jpg"
+                                    />
                                   )}
                                   <span>hello</span>
                                   <span> {user}</span>
@@ -215,12 +220,18 @@ function Header() {
                     </div>
                     <span className="adcart">
                       <span onClick={() => navigate("/addtocart")}>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i className="fa-solid fa-cart-shopping"></i>
                         {cartItems.length}
                       </span>
                     </span>
 
                     <li>
+                      {/* <button
+                        className="Sell-btn"
+                        onClick={() => navigate("/additem")}>
+                        <i className="fa-solid fa-plus"></i>SELL
+                      </button> */}
+                                            
                       {user ? (
                         <button
                           className="Sell-btn"

@@ -18,18 +18,18 @@ function Card(props) {
   };
 
   return (
-    <div className="Main-card">
+    <div className="Main-card mb-5">
       <div className="Main-card ">
         <img src={img} className="card-img-top" alt="..." />
         <div className="card-body">
           <div className="titleDiv">
+          <h2 className="card-subtitle m-2 text-body">{title}</h2>
             <h5 className="card-title">Rs {price}</h5>
           </div>
           <br></br>
           <h6 className="card-subtitle m-2 text-body-secondary">
             {description}
           </h6>
-          <p className="card-text text-body-secondary">days ago</p>
 
           <button onClick={handleAddToCart} className="add-cart">
             Add to Cart

@@ -62,8 +62,8 @@ function Layout(){
    }, []);
 
    useEffect(() => {
-     const pathname = window.location.pathname
-     console.log(pathname,"pathname")
+     const pathname = window.location
+    //  console.log(pathname,"pathname")
      if(user){
       if(pathname ==="/login" || pathname === "/register"){
         navigate("/")

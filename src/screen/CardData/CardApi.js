@@ -11,12 +11,23 @@ function CardApi() {
     getProducts();
   }, []);
 
-  const getProducts = async () => {
-    const ads = await getAds();
-    // console.log('ads components' ,ads)
-    setProducts(ads);
-    // console.log("setProduct data show", ads);
-  };
+  // const getProducts = async () => {
+  //   const ads = await getAds();
+  //   console.log('ads components' ,ads)
+  //   setProducts(ads);
+  //   console.log("setProduct data show", ads);
+  // };
+    function getProducts() {
+      fetch("http://localhost:3001/product")
+        .then((res) => res.json())
+        .then((res) => {
+          // console.log(res.products)
+          setProducts(res.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
 
   if (!products.length) {
     return (
@@ -32,23 +43,19 @@ function CardApi() {
 
   return (
     <div className="App">
-
-     
-      <br />
-<div className="Main-cards">
-
+    <div className="Main-cards">
       {products.map((item) => {
-        const { title, id, description, imageUrls, price } = item;
+        const { title, id, description, Image, price } = item;
         return (
-          <Card
-            key={item.id}
+          <Card 
+            key={id}
             id={id}
             title={title}
             description={description}
             price={price}
-            img={imageUrls}
-            />
-            );
+            img={Image}
+          />
+        );
           })}
           </div>
     </div>
