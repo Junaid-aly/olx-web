@@ -30,6 +30,7 @@ export const auth = getAuth(app);
 const db = getFirestore(app);
 export const storage = getStorage(app);
 
+
 export async function register(userinfo) {
   try {
     const { email, password, age, fullname } = userinfo;
@@ -55,50 +56,18 @@ export async function login(userinfo, navigate) {
     alert(e.message);
   }
 }
-// export async function additem(ad) {
-//   try {
-//     const { title, description, price, image } = ad;
-//     const imageArray = Array.from(image[0]);
-//     const arr = [];
-//     for (let i = 0; i < imageArray.length; i++) {
-//       const image = imageArray[i];
-//       const storageRef = ref(storage, `Todos/${image.name}`);
-//       await uploadBytes(storageRef, image);
-//       const url = await getDownloadURL(storageRef);
-//       arr.push(url);
-//     }
-//     await addDoc(collection(db, "Todos"), {
-//       title,
-//       description,
-//       price,
-//       imageUrl: arr,
-//     });
-//     alert("Ad Post Successfully");
-//   } catch (e) {
-//     alert(e.message);
-//   }
-// }
+
 
 export async function addItem(ad) {
   try {
-    const { title, description, price, images } = ad; // Assuming images is an array of File objects
-    const imageUrls = [];
+    const { image } = ad; // Assuming images is an array of File objects
 
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      const imageName = `${Date.now()}-${image.name}`; // Using timestamp to make image names unique
-      const storageRef = ref(storage, `Todos/${imageName}`);
+   
+    const storageRef = ref(storage, `Todos/${image.name}`);
       await uploadBytes(storageRef, image);
-      const url = await getDownloadURL(storageRef);
-      imageUrls.push(url);
-    }
-
-    await addDoc(collection(db, "Todos"), {
-      title,
-      description,
-      price,
-      imageUrls, // Storing an array of image URLs
-    });
+      const imgUrl = await getDownloadURL(storageRef);
+      return imgUrl
+    
     alert("Ad Posted Successfully");
   } catch (e) {
     alert(e.message);
